@@ -23,8 +23,8 @@ namespace MyConstants
 
 4. Create a NuGet package from your project:
 
-`dotnet pack --configuration Release`
 
+`dotnet pack --configuration Release`
 This will create a `.nupkg` file in the bin/Release directory. You can then publish this package to a NuGet feed, or reference it directly in other projects.
 
 To use the constant in another project, you would first add a reference to the NuGet package, and then you can access the constant like this:

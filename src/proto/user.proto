@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "buf/validate/validate.proto";
+
+option csharp_namespace = "DotnetProtoValidate.Example";
+
+message User {
+  int32 age = 1 [(buf.validate.field).cel = {
+    id: "user.age",
+    expression: "this < 18 ? 'User must be at least 18 years old': ''"
+  }];
+}

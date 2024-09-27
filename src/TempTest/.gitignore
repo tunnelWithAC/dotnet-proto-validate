@@ -1,0 +1,29 @@
+**/bin/*
+**/obj/*
+
+# Build and debug artifacts
+bin/
+obj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Test Results
+TestResults/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+*.nuget.props
+*.nuget.targets
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Temporary files
+*.tmp
+*.tmp.*

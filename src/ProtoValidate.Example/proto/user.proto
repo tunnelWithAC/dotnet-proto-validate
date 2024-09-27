@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "ProtoValidate.Example";
+
+message User {
+  int32 age = 1;
+}
+
+message Person {
+  int32 age = 1;
+}
+
+message ExEvent {
+  string id = 1;
+}

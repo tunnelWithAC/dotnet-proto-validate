@@ -1,0 +1,38 @@
+name: Copy files from another repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  copy-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v2
+        with:
+          repository: source-org/source-repo
+          token: ${{ secrets.PAT }} # Personal Access Token (PAT) of a user who has access to the repo
+
+      - name: Checkout target repo
+        uses: actions/checkout@v2
+        with:
+          repository: target-org/target-repo
+          path: target
+          token: ${{ secrets.PAT }} # Personal Access Token (PAT) of a user who has access to the repo
+
+      - name: Copy files
+        run: |
+          cp -R ./* target/
+
+      - name: Push changes
+        run: |
+          cd target
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Copy files from source repo"
+          git push
+

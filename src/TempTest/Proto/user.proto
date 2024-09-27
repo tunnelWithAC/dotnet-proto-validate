@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package my.package;
+
+import "buf/validate/validate.proto";
+
+
+option csharp_namespace = "ProtoModels";
+
+message Student {
+  // Student's name, must be at least 18.
+  int32 age = 1 [(buf.validate.field).cel = {
+    id: "user.age",
+    expression: "this < 18 ? 'User must be at least 18 years old': ''"
+  }];
+  uint64 id = 2 [(buf.validate.field).uint64.gt = 999];
+
+}
+
+// message Transaction {
+//   uint64 id = 1 [(buf.validate.field).uint64.gt = 999];
+// }
